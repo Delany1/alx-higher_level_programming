@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+"""Defines a class Rectangle that inherits from BaseGeometry."""
+
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
@@ -8,19 +10,27 @@ BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 class Rectangle(BaseGeometry):
 
-    """ Class that defines a rectangle from BaseGeometry Class """
+    """Represent a rectangle using BaseGeometry."""
 
 
 
     def __init__(self, width, height):
 
-        """ Initializes instance """
+        """Intialize a new Rectangle.
 
-        self.integer_validator("width", width)
+        Args:
 
-        self.integer_validator("height", height)
+            width (int): The width of the new Rectangle.
+
+            height (int): The height of the new Rectangle.
+
+        """
+
+        super().integer_validator("width", width)
 
         self.__width = width
+
+        super().integer_validator("height", height)
 
         self.__height = height
 
@@ -28,7 +38,7 @@ class Rectangle(BaseGeometry):
 
     def area(self):
 
-        """ Method that returns the area of the instance"""
+        """Return the area of the rectangle."""
 
         return self.__width * self.__height
 
@@ -36,6 +46,10 @@ class Rectangle(BaseGeometry):
 
     def __str__(self):
 
-        """ Special method that returns the printable string """
+        """Return the print() and str() representation of a Rectangle."""
 
-        return "[Rectangle] {:d}/{:d}".format(self.__width, self.__height)
+        string = "[" + str(self.__class__.__name__) + "] "
+
+        string += str(self.__width) + "/" + str(self.__height)
+
+        return string
